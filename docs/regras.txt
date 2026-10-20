@@ -90,3 +90,69 @@ conn.close()
 print(" Banco de dados 'mesafartai.db' inicializado com sucesso!") 
 if __name__ == "__main__": 
 inicializar_banco()
+
+
+==========================================================================
+ETAPA 2 (AC-3): MOTOR NLU E TRAVA DE THRESHOLD
+Valor da Etapa: 0,25 Ponto na AC-3
+==========================================================================
+Com o repositório organizado e o banco SQLite gerado, nesta etapa o grupo
+implementa a inteligência de linguagem do MESAFARTAI: o módulo src/nlu.py
+com TF-IDF + Random Forest e a Trava de Segurança (Threshold/Fallback).
+Desenvolvimento obrigatório utilizando o VS Code.
+
+Passo 1: Clonar o Repositório
+1. No GitHub, clicar no botão verde <> Code e copiar a URL HTTPS do repositório.
+2. No terminal, executar:
+   git clone https://github.com/Gi0vai123/PROJETO-MESAFARTAI.git
+   cd PROJETO-MESAFARTAI
+
+Passo 2: Abrir no VS Code e Instalar Bibliotecas
+1. Abrir a pasta do projeto no VS Code (code . ou Arquivo -> Abrir Pasta).
+2. Criar o arquivo requirements.txt na raiz com:
+   streamlit
+   scikit-learn
+   pandas
+   numpy
+3. No terminal do VS Code, instalar os pacotes:
+   pip install -r requirements.txt
+
+Passo 3: Criar o Código do Motor NLU (src/nlu.py)
+Criar o arquivo nlu.py dentro de src/ contendo:
+- Base de treino com frases e as intenções: cadastrar_doacao,
+  solicitar_alimentos, consultar_status e fora_de_escopo.
+- Classe MotorNLU com:
+  * TfidfVectorizer(ngram_range=(1, 2)) para vetorizar os textos;
+  * RandomForestClassifier(n_estimators=80, random_state=42) para classificar;
+  * Trava de Segurança: se a confiança máxima for menor que o limiar
+    (limiar_threshold=0.60) ou a intenção for "fora_de_escopo", retorna
+    "fallback" pedindo para o usuário reformular a mensagem.
+- Bateria de testes de estresse executada no bloco if __name__ == "__main__".
+
+Passo 4: Executar e Testar (Validação Local)
+No terminal do VS Code, executar:
+   python src/nlu.py
+Verificar se as mensagens incertas ou fora de escopo caem no fallback.
+
+Passo 5: Commit e Push para o GitHub
+   git add .
+   git commit -m "feat(nlu): implementa motor TF-IDF + Random Forest com trava de threshold"
+   git push origin teste_main
+(Obs.: a branch principal deste repositório é teste_main.)
+
+Passo 6: Inserir as etapas 1 a 5 no arquivo docs/regras.txt.
+
+Passo 7: Relatório de Execução
+Gerar o arquivo docs/relatório_fase1_etapa2.md respondendo:
+1. Número de árvores utilizadas no motor NLU.
+2. Valor de threshold utilizado no limiar de confiança.
+3. Resultado da primeira execução.
+4. Como melhorar os resultados e aumentar o grau de confiança.
+5. Por que o Random Forest foi o melhor método de ML para essa fase.
+
+CHECKLIST DE FINALIZAÇÃO DA ETAPA
+[x] Arquivo src/nlu.py salvo e executado sem erros no terminal.
+[x] Trava de Threshold (< 0.60) funcionando para mensagens incertas/fora de escopo.
+[x] Arquivo requirements.txt atualizado na raiz do repositório.
+[x] git add, git commit e git push executados com sucesso.
+[x] Inserção de dados no regras.txt e relatório de execução construído.

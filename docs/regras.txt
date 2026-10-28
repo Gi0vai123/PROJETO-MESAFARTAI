@@ -156,3 +156,63 @@ CHECKLIST DE FINALIZAÇÃO DA ETAPA
 [x] Arquivo requirements.txt atualizado na raiz do repositório.
 [x] git add, git commit e git push executados com sucesso.
 [x] Inserção de dados no regras.txt e relatório de execução construído.
+
+
+========================================================================
+ETAPA 3 (AC-3) - EXTRATOR DE ENTIDADES (REGEX) E MATCHMAKING LOGÍSTICO (KNN)
+========================================================================
+OBJETIVO: Implementar o Extrator de Entidades por Regex (src/entities.py)
+e o Motor de Matchmaking Logístico por KNN (src/matchmaking.py) utilizando
+o VS Code e sincronizando as alterações com o GitHub.
+------------------------------------------------------------------------
+
+PASSO 1: SINCRONIZAR E PREPARAR O REPOSITÓRIO NO VS CODE
+1. Copie todas as instruções desta etapa no arquivo docs/regras.txt
+2. Abra o VS Code para a continuidade do desenvolvimento do seu projeto
+3. Abra a pasta do projeto 'PROJETO-MESAFARTAI' no VSCode: abra um terminal
+   e digite: code .
+4. Baixe as atualizações mais recentes do grupo no GitHub executando:
+   git pull origin main
+   ATENÇÃO: Se o projeto não estiver baixado na máquina é necessário
+   voltar à aula 10 e refazer a etapa de clonar o projeto.
+5. Certifique-se de que as dependências do projeto estão instaladas:
+   pip install -r requirements.txt
+
+------------------------------------------------------------------------
+PASSO 2: CRIAR O EXTRATOR DE ENTIDADES POR REGEX (src/entities.py)
+------------------------------------------------------------------------
+Criar o arquivo entities.py dentro de src/ com a classe ExtratorEntidades,
+que extrai de uma frase livre:
+ - alimento (vocabulário fixo de alimentos);
+ - quantidade_kg (regex: número + kg/quilos/kilos/caixas/sacas; padrão 1.0);
+ - data_validade ("hoje", "amanhã" ou padrão de +3 dias).
+
+------------------------------------------------------------------------
+PASSO 3: CRIAR O MOTOR DE MATCHMAKING KNN (src/matchmaking.py)
+------------------------------------------------------------------------
+Criar o arquivo matchmaking.py dentro de src/ com a classe MotorMatchmaking,
+que lê as ONGs da tabela 'usuarios' do SQLite (mesafartai.db), treina um
+NearestNeighbors (n_neighbors=1, distância euclidiana) com as coordenadas
+[lat, long] e retorna a ONG mais próxima do doador e a distância estimada
+em km (distância * 111).
+
+------------------------------------------------------------------------
+PASSO 4: EXECUTAR E VALIDAR OS SCRIPTS NO TERMINAL DO VS CODE
+------------------------------------------------------------------------
+python src/entities.py
+python src/matchmaking.py
+
+------------------------------------------------------------------------
+PASSO 5: COMMIT E PUSH FINAL PARA O GITHUB
+------------------------------------------------------------------------
+git add .
+git commit -m "feat(logistics): implementa extracao por regex e matchmaking knn"
+git push origin main
+
+------------------------------------------------------------------------
+CHECKLIST DA ETAPA 3 (AC-3)
+------------------------------------------------------------------------
+[x] Repositório sincronizado via `git pull` antes de iniciar.
+[x] Arquivo `src/entities.py` criado e validado no terminal sem erros.
+[x] Arquivo `src/matchmaking.py` criado e validado no terminal sem erros.
+[x] Alterações enviadas com sucesso ao GitHub via `git push`.

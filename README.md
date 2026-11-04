@@ -26,4 +26,4 @@ mais próxima em tempo recorde.
 
 Este projeto está diretamente alinhado à ODS 2 da ONU (Fome Zero e Agricultura Sustentável). 
 Mais do que uma avaliação acadêmica, este projeto será um case de impacto social e tecnologia 
-do seu portfólio profissional.
+do seu portfólio profissional..
